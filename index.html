@@ -3,487 +3,560 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aditya Kudalkar - Android & Full-Stack Developer</title>
+    <title>Aditya Kudalkar | Visual Android & Full-Stack Developer</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
+    <!-- FontAwesome & Lucide Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Syne (Huge Display) & Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        brandDark: '#0F172A',   /* 60% Main Color */
-                        brandCard: '#1E293B',   /* 30% Secondary Color */
-                        brandCyan: '#38BDF8',   /* 10% Glow Accent */
-                        brandEmerald: '#10B981' /* Accent Glow */
+                        brandDark: '#080C14',
+                        brandCard: '#111827',
+                        brandPurple: '#8B5CF6',
+                        brandOrange: '#FF5722',
+                        brandMagenta: '#D946EF',
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['Fira Code', 'monospace']
+                        syne: ['Syne', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['Courier New', 'monospace']
+                    },
+                    animation: {
+                        'spin-slow': 'spin 12s linear infinite',
+                        'marquee': 'marquee 25s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        }
                     }
                 }
             }
         }
     </script>
     <style>
-        /* Custom scrollbar and modal styles */
+        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #0F172A;
+            background: #080C14;
         }
         ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
+            background: #374151;
+            border-radius: 9999px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #38BDF8;
+            background: #8B5CF6;
         }
-        .glow-effect {
-            box-shadow: 0 0 25px -5px rgba(56, 189, 248, 0.3);
+
+        .hero-title-text {
+            font-size: clamp(2.5rem, 8vw, 7.5rem);
+            line-height: 0.9;
+            letter-spacing: -0.04em;
         }
-        .glass-card {
-            background: rgba(30, 41, 59, 0.85);
-            backdrop-filter: blur(12px);
+
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glow-purple {
+            box-shadow: 0 0 50px -10px rgba(139, 92, 246, 0.35);
+        }
+
+        .glow-orange {
+            box-shadow: 0 0 50px -10px rgba(255, 87, 34, 0.35);
+        }
+
+        /* Circular Rotating Text Badge */
+        .badge-rotate {
+            animation: spin 14s linear infinite;
         }
     </style>
 </head>
-<body class="bg-brandDark text-slate-100 font-sans selection:bg-brandCyan selection:text-slate-900 relative overflow-x-hidden">
+<body class="bg-brandDark text-slate-100 font-sans selection:bg-brandPurple selection:text-white relative overflow-x-hidden">
 
-    <!-- Ambient Glowing Background Circles -->
-    <div class="fixed top-0 left-1/4 w-[500px] h-[500px] bg-brandCyan/10 rounded-full blur-[130px] pointer-events-none z-0"></div>
-    <div class="fixed bottom-10 right-10 w-[400px] h-[400px] bg-brandEmerald/10 rounded-full blur-[140px] pointer-events-none z-0"></div>
+    <!-- Background Vibrant Ambient Lighting -->
+    <div class="fixed top-[-10%] left-[-10%] w-[600px] h-[600px] bg-brandPurple/20 rounded-full blur-[150px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-brandOrange/20 rounded-full blur-[150px] pointer-events-none z-0"></div>
+    <div class="fixed top-[40%] right-[20%] w-[400px] h-[400px] bg-brandMagenta/10 rounded-full blur-[140px] pointer-events-none z-0"></div>
 
-    <!-- STICKY HEADER NAV -->
-    <header id="header" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 py-5 bg-brandDark/80 backdrop-blur-md border-b border-slate-800/80">
+    <!-- STICKY MODERN HEADER NAV -->
+    <header class="fixed top-0 left-0 right-0 z-50 py-4 bg-brandDark/80 backdrop-blur-md border-b border-slate-800/60">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            
+            <!-- Brand Monogram -->
             <a href="#hero" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brandCyan to-brandEmerald p-[2px] shadow-lg shadow-brandCyan/20 group-hover:scale-105 transition-transform">
-                    <div class="w-full h-full bg-brandDark rounded-[10px] flex items-center justify-center font-bold text-brandCyan text-lg">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brandPurple to-brandOrange p-[2px] shadow-lg shadow-brandPurple/20 group-hover:scale-105 transition-transform">
+                    <div class="w-full h-full bg-brandDark rounded-[10px] flex items-center justify-center font-syne font-extrabold text-white text-base">
                         AK
                     </div>
                 </div>
                 <div>
-                    <span className="text-lg font-bold tracking-tight text-slate-100 block leading-tight">
-                        Aditya Kudalkar
-                    </span>
-                    <span class="text-[10px] text-brandCyan font-mono tracking-wider block">ANDROID & FULL-STACK</span>
+                    <span class="text-sm font-syne font-bold tracking-wider text-slate-100 block leading-none">ADITYA KUDALKAR</span>
+                    <span class="text-[10px] text-brandPurple font-mono tracking-widest block mt-0.5">CREATIVE DEVELOPER</span>
                 </div>
             </a>
 
-            <!-- Nav Links -->
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-                <a href="#about" class="hover:text-brandCyan transition-colors">About</a>
-                <a href="#projects" class="hover:text-brandCyan transition-colors">Projects</a>
-                <a href="#skills" class="hover:text-brandCyan transition-colors">Skills & Tech</a>
-                <a href="#contact" class="hover:text-brandCyan transition-colors">Contact</a>
-            </nav>
+            <!-- Live Status & Local Time -->
+            <div class="hidden lg:flex items-center gap-6 text-xs font-mono text-slate-400">
+                <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-800">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <span class="text-slate-300">AVAILABLE FOR CLIENT PROJECTS</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-clock text-brandPurple"></i>
+                    <span id="live-time">KOLHAPUR, IN (16:04 IST)</span>
+                </div>
+            </div>
 
-            <!-- CTA Header Button -->
-            <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-brandCyan/10 border border-brandCyan/30 text-brandCyan hover:bg-brandCyan hover:text-slate-950 transition-all duration-300 shadow-lg shadow-brandCyan/10">
-                <span>Hire / Collaborate</span>
-                <i class="fa-solid fa-chevron-right text-[10px]"></i>
-            </a>
+            <!-- Nav Links & Action CTA -->
+            <div class="flex items-center gap-6">
+                <nav class="hidden md:flex items-center gap-6 text-xs font-semibold uppercase tracking-wider text-slate-300">
+                    <a href="#about" class="hover:text-brandPurple transition-colors">About</a>
+                    <a href="#projects" class="hover:text-brandPurple transition-colors">Works</a>
+                    <a href="#skills" class="hover:text-brandPurple transition-colors">Skills</a>
+                    <a href="#contact" class="hover:text-brandPurple transition-colors">Contact</a>
+                </nav>
+                <a href="#contact" class="px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-brandPurple to-brandOrange text-white shadow-lg shadow-brandPurple/20 hover:scale-105 transition-all">
+                    Let's Talk
+                </a>
+            </div>
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
-    <main class="relative z-10 pt-24">
+    <!-- MAIN BODY -->
+    <main class="relative z-10 pt-20">
 
-        <!-- HERO SECTION -->
-        <section id="hero" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 md:pt-16 md:pb-28">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Hero Left Text -->
-                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/90 border border-slate-700/80 text-xs font-medium text-slate-300 shadow-inner">
-                        <span class="relative flex h-2.5 w-2.5">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brandEmerald"></span>
-                        </span>
-                        <span class="text-slate-200">Available for Freelance & Client Projects</span>
-                    </div>
-
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-                        Architecting Powerful <br />
-                        <span class="bg-gradient-to-r from-brandCyan via-teal-300 to-brandEmerald bg-clip-text text-transparent">
-                            Android & Web Apps
-                        </span>
-                    </h1>
-
-                    <p class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                        Hi, I'm <strong class="text-slate-100 font-semibold">Aditya Kudalkar</strong>. I specialize in building native high-performance Android applications with Kotlin, modern React Web frontends, and Python API services. Ready to deliver client-ready software.
-                    </p>
-
-                    <!-- CTA Buttons -->
-                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
-                        <a href="#projects" class="px-6 py-3.5 rounded-xl font-semibold text-sm bg-gradient-to-r from-brandCyan to-brandEmerald text-slate-950 shadow-lg shadow-brandCyan/25 hover:shadow-brandCyan/40 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2">
-                            <i class="fa-solid fa-briefcase"></i>
-                            <span>Explore Portfolio Work</span>
-                        </a>
-
-                        <a href="#contact" class="px-6 py-3.5 rounded-xl font-semibold text-sm bg-slate-800/90 hover:bg-slate-800 border border-slate-700 text-slate-200 hover:text-white transition-all flex items-center gap-2">
-                            <i class="fa-solid fa-envelope text-brandCyan"></i>
-                            <span>Contact Me</span>
-                        </a>
-                    </div>
-
-                    <!-- Tech Badges -->
-                    <div class="pt-6 border-t border-slate-800 flex flex-wrap justify-center lg:justify-start items-center gap-3 text-xs font-mono text-slate-400">
-                        <span class="text-slate-500 font-semibold uppercase tracking-wider">Tech Stack:</span>
-                        <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 text-brandCyan">Kotlin</span>
-                        <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 text-brandEmerald">Android SDK</span>
-                        <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 text-sky-300">React.js</span>
-                        <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 text-yellow-400">Python</span>
-                        <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 text-purple-400">Firebase</span>
-                    </div>
+        <!-- AGENCY STYLE HERO SECTION -->
+        <section id="hero" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-24 lg:pt-20 lg:pb-32 overflow-hidden">
+            
+            <!-- Top Tagline Pill -->
+            <div class="flex justify-center mb-6">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-brandPurple/20 to-brandOrange/20 border border-brandPurple/30 text-xs font-mono text-purple-200">
+                    <i class="fa-solid fa-sparkles text-brandOrange"></i>
+                    <span>ANDROID DEVELOPER & UI/UX ARCHITECT</span>
                 </div>
+            </div>
 
-                <!-- Hero Right: Profile Photo Avatar & Card -->
-                <div class="lg:col-span-5 flex justify-center">
-                    <div class="relative group w-full max-w-sm">
-                        <div class="absolute -inset-1 bg-gradient-to-r from-brandCyan to-brandEmerald rounded-3xl blur-xl opacity-40 group-hover:opacity-70 transition duration-500 animate-pulse"></div>
-                        
-                        <div class="relative rounded-3xl bg-brandCard border border-slate-700 p-6 shadow-2xl flex flex-col items-center text-center">
-                            <!-- Photo Container -->
-                            <div class="relative w-48 h-48 sm:w-56 sm:h-56 rounded-2xl overflow-hidden border-2 border-brandCyan/40 shadow-inner mb-5 group-hover:scale-105 transition-transform duration-300">
-                                <img src="my portfolio.jpeg" alt="Aditya Kudalkar" class="w-full h-full object-cover object-top" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80';">
-                                <div class="absolute inset-0 bg-gradient-to-t from-brandDark via-transparent to-transparent opacity-50"></div>
-                                <div class="absolute bottom-2 left-2 right-2 px-2 py-1 bg-slate-900/90 backdrop-blur-md rounded-lg text-[10px] text-brandCyan font-mono flex items-center justify-center gap-1.5 border border-brandCyan/20">
-                                    <i class="fa-solid fa-code text-brandEmerald"></i>
-                                    <span>Software Engineer</span>
-                                </div>
-                            </div>
+            <!-- HUGE VISUAL AGENCY TITLE WITH OVERLAY PORTRAIT -->
+            <div class="relative text-center">
+                <h1 class="hero-title-text font-syne font-extrabold uppercase text-transparent bg-clip-text bg-gradient-to-b from-white via-slate-200 to-slate-500 tracking-tighter select-none">
+                    VISUAL <br />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandPurple via-purple-300 to-brandOrange">DEVELOPER</span>
+                </h1>
 
-                            <h3 class="text-xl font-bold text-slate-100">Aditya Kudalkar</h3>
-                            <p class="text-xs text-slate-400 mb-4 font-mono">B.E / Diploma Computer Engineering</p>
+                <!-- CENTER FEATURED PORTRAIT CARD -->
+                <div class="relative -mt-16 sm:-mt-24 md:-mt-32 max-w-md mx-auto z-20">
+                    
+                    <!-- Floating Tech Pills -->
+                    <div class="hidden sm:block absolute -left-8 top-12 z-30 px-3.5 py-2 rounded-2xl glass-panel text-xs font-mono font-bold text-brandPurple border border-brandPurple/40 shadow-xl shadow-brandPurple/20 animate-bounce" style="animation-duration: 4s;">
+                        ⚡ Kotlin Native
+                    </div>
+                    <div class="hidden sm:block absolute -right-8 bottom-20 z-30 px-3.5 py-2 rounded-2xl glass-panel text-xs font-mono font-bold text-brandOrange border border-brandOrange/40 shadow-xl shadow-brandOrange/20 animate-bounce" style="animation-duration: 5s;">
+                        ⚛️ React & Tailwind
+                    </div>
 
-                            <div class="grid grid-cols-3 gap-2 w-full pt-4 border-t border-slate-700/80 text-left">
-                                <div class="bg-slate-900/60 p-2.5 rounded-xl border border-slate-800 text-center">
-                                    <p class="text-lg font-bold text-brandCyan">6+</p>
-                                    <p class="text-[10px] text-slate-400 uppercase font-mono">Projects</p>
+                    <!-- Image Frame -->
+                    <div class="relative rounded-3xl p-2 bg-gradient-to-b from-brandPurple via-purple-900 to-brandOrange shadow-2xl glow-purple overflow-hidden group">
+                        <div class="w-full h-80 sm:h-96 md:h-[420px] rounded-[22px] overflow-hidden bg-slate-900 relative">
+                            <img 
+                                src="my portfolio.jpeg" 
+                                alt="Aditya Kudalkar" 
+                                class="w-full h-full object-cover object-top filter contrast-105 group-hover:scale-105 transition-transform duration-700"
+                                onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80';"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-brandDark via-transparent to-transparent opacity-80"></div>
+                            
+                            <!-- Bottom Overlay Details -->
+                            <div class="absolute bottom-4 left-4 right-4 text-left p-3 rounded-xl bg-slate-950/80 backdrop-blur-md border border-white/10 flex justify-between items-center">
+                                <div>
+                                    <h4 class="text-sm font-bold text-white">Aditya Kudalkar</h4>
+                                    <p class="text-[10px] text-brandPurple font-mono">B.E / Diploma Computer Eng.</p>
                                 </div>
-                                <div class="bg-slate-900/60 p-2.5 rounded-xl border border-slate-800 text-center">
-                                    <p class="text-lg font-bold text-brandEmerald">Native</p>
-                                    <p class="text-[10px] text-slate-400 uppercase font-mono">Android</p>
-                                </div>
-                                <div class="bg-slate-900/60 p-2.5 rounded-xl border border-slate-800 text-center">
-                                    <p class="text-lg font-bold text-sky-300">100%</p>
-                                    <p class="text-[10px] text-slate-400 uppercase font-mono">Dedicated</p>
-                                </div>
+                                <span class="px-2.5 py-1 rounded-md bg-brandPurple/20 text-brandPurple text-[10px] font-mono border border-brandPurple/40">PRO DESIGNER</span>
                             </div>
                         </div>
                     </div>
+
+                    <!-- ROTATING SEAL / BADGE (AS IN INSPIRATION PIC) -->
+                    <div class="absolute -bottom-8 -right-8 sm:-bottom-10 sm:-right-10 z-30 w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center">
+                        <svg class="w-full h-full badge-rotate" viewBox="0 0 100 100">
+                            <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+                            <text class="text-[9px] font-bold fill-purple-300 uppercase font-mono tracking-widest">
+                                <textPath href="#circlePath">
+                                    • GET IN TOUCH • ADITYA PORTFOLIO • CLIENT READY
+                                </textPath>
+                            </text>
+                        </svg>
+                        <div class="absolute w-12 h-12 rounded-full bg-brandOrange text-slate-950 flex items-center justify-center text-lg font-bold shadow-lg">
+                            <i class="fa-solid fa-arrow-down-long -rotate-45"></i>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
+
+            <!-- Stats & Quick Intro Grid Below Hero -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="glass-panel p-6 rounded-2xl text-center md:text-left">
+                    <span class="text-3xl font-syne font-extrabold text-brandPurple">06+</span>
+                    <h5 class="text-sm font-bold text-slate-200 mt-1">Featured Applications</h5>
+                    <p class="text-xs text-slate-400 mt-1">Native Android apps, AI tools, and full-stack web platforms built for real clients.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl text-center md:text-left">
+                    <span class="text-3xl font-syne font-extrabold text-brandOrange">100%</span>
+                    <span class="text-xs font-mono text-emerald-400 ml-2">Job Ready</span>
+                    <h5 class="text-sm font-bold text-slate-200 mt-1">Clean Architecture</h5>
+                    <p class="text-xs text-slate-400 mt-1">Strict adherence to Material Design, Firebase realtime sync, and REST API integration.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl text-center md:text-left flex flex-col justify-between">
+                    <div>
+                        <h5 class="text-sm font-bold text-slate-200">Have a Project in Mind?</h5>
+                        <p class="text-xs text-slate-400 mt-1">Direct consultation for app development & custom web builds.</p>
+                    </div>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-xs font-bold text-brandPurple hover:text-brandOrange transition-colors mt-3">
+                        <span>Initiate Discussion</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
         </section>
+
+        <!-- INFINITE TICKER MARQUEE BANNER -->
+        <div class="py-4 bg-gradient-to-r from-brandPurple via-purple-800 to-brandOrange text-slate-950 font-syne font-extrabold uppercase text-sm md:text-base tracking-widest overflow-hidden whitespace-nowrap shadow-xl">
+            <div class="inline-block animate-marquee">
+                <span>ANDROID DEVELOPER • KOTLIN NATIVE • REACT JS • PYTHON SCRIPTING • FIREBASE REALTIME • UI/UX DESIGNER • FULL STACK ARCHITECTURE • PREPSPRINT APP • DEVCONNECT • </span>
+                <span>ANDROID DEVELOPER • KOTLIN NATIVE • REACT JS • PYTHON SCRIPTING • FIREBASE REALTIME • UI/UX DESIGNER • FULL STACK ARCHITECTURE • PREPSPRINT APP • DEVCONNECT • </span>
+            </div>
+        </div>
 
         <!-- ABOUT SECTION -->
-        <section id="about" class="py-16 bg-brandDark/80 border-y border-slate-800">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-12">
-                    <h2 class="text-xs font-mono font-semibold uppercase tracking-widest text-brandCyan mb-2">Core Competencies</h2>
-                    <h3 class="text-3xl font-extrabold text-slate-100">Why Work With Aditya?</h3>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-brandCard p-6 rounded-2xl border border-slate-800 hover:border-brandCyan/40 transition-all duration-300">
-                        <div class="w-12 h-12 rounded-xl bg-brandCyan/10 border border-brandCyan/30 flex items-center justify-center text-brandCyan mb-5 text-xl">
-                            <i class="fa-solid fa-mobile-screen-button"></i>
+        <section id="about" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-xs font-mono uppercase tracking-widest text-brandPurple font-bold">Behind the Code</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-syne font-extrabold leading-tight">
+                        Shaping Mobile & Web Experiences <br />
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandPurple to-brandOrange">That Stand Out</span>
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+                        I am a Computer Engineer specialized in constructing native Android mobile applications with Kotlin & XML layouts alongside reactive frontend applications using React.js and Tailwind CSS.
+                    </p>
+                    
+                    <div class="space-y-3 pt-2">
+                        <div class="flex items-center gap-3 text-sm text-slate-300">
+                            <div class="w-6 h-6 rounded-full bg-brandPurple/20 text-brandPurple flex items-center justify-center text-xs"><i class="fa-solid fa-check"></i></div>
+                            <span>Native Android Studio SDK & Kotlin ViewModel Architecture</span>
                         </div>
-                        <h4 class="text-lg font-bold text-slate-100 mb-2">Native Android Mastery</h4>
-                        <p class="text-sm text-slate-400 leading-relaxed">
-                            Developing robust Android apps using Kotlin, custom XML responsive views, Firebase Realtime backend, and clean architecture.
-                        </p>
-                    </div>
-
-                    <div class="bg-brandCard p-6 rounded-2xl border border-slate-800 hover:border-brandEmerald/40 transition-all duration-300">
-                        <div class="w-12 h-12 rounded-xl bg-brandEmerald/10 border border-brandEmerald/30 flex items-center justify-center text-brandEmerald mb-5 text-xl">
-                            <i class="fa-solid fa-globe"></i>
+                        <div class="flex items-center gap-3 text-sm text-slate-300">
+                            <div class="w-6 h-6 rounded-full bg-brandOrange/20 text-brandOrange flex items-center justify-center text-xs"><i class="fa-solid fa-check"></i></div>
+                            <span>Firebase Firestore, Realtime Database, Authentication & Cloud Storage</span>
                         </div>
-                        <h4 class="text-lg font-bold text-slate-100 mb-2">Modern Web Development</h4>
-                        <p class="text-sm text-slate-400 leading-relaxed">
-                            Building reactive web user interfaces with React.js, HTML5, CSS3, JavaScript, and Tailwind CSS with responsive layouts.
-                        </p>
-                    </div>
-
-                    <div class="bg-brandCard p-6 rounded-2xl border border-slate-800 hover:border-brandCyan/40 transition-all duration-300">
-                        <div class="w-12 h-12 rounded-xl bg-brandCyan/10 border border-brandCyan/30 flex items-center justify-center text-brandCyan mb-5 text-xl">
-                            <i class="fa-solid fa-brain"></i>
+                        <div class="flex items-center gap-3 text-sm text-slate-300">
+                            <div class="w-6 h-6 rounded-full bg-brandMagenta/20 text-brandMagenta flex items-center justify-center text-xs"><i class="fa-solid fa-check"></i></div>
+                            <span>RESTful APIs, Python Automation Scripts, & Computer Vision OCR</span>
                         </div>
-                        <h4 class="text-lg font-bold text-slate-100 mb-2">Problem Solving & Python</h4>
-                        <p class="text-sm text-slate-400 leading-relaxed">
-                            Strong algorithm skills utilizing Python scripts, OCR algorithms, data parsing tools, and structured database engines.
-                        </p>
                     </div>
                 </div>
+
+                <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+                    <div class="glass-panel p-6 rounded-3xl border-l-4 border-brandPurple space-y-3">
+                        <i class="fa-solid fa-mobile-screen text-2xl text-brandPurple"></i>
+                        <h4 class="text-base font-bold text-white">Mobile Architecture</h4>
+                        <p class="text-xs text-slate-400">Building intuitive UI/UX for Android apps with crisp XML layouts and Kotlin business logic.</p>
+                    </div>
+                    <div class="glass-panel p-6 rounded-3xl border-l-4 border-brandOrange space-y-3">
+                        <i class="fa-solid fa-laptop-code text-2xl text-brandOrange"></i>
+                        <h4 class="text-base font-bold text-white">Web Platform Dev</h4>
+                        <p class="text-xs text-slate-400">Crafting fast single-page web applications with modern React, HTML5, and Tailwind styling.</p>
+                    </div>
+                    <div class="glass-panel p-6 rounded-3xl border-l-4 border-brandMagenta space-y-3">
+                        <i class="fa-solid fa-database text-2xl text-brandMagenta"></i>
+                        <h4 class="text-base font-bold text-white">Backend & APIs</h4>
+                        <p class="text-xs text-slate-400">Integrating cloud databases, user authentication pipelines, and Python processing tools.</p>
+                    </div>
+                    <div class="glass-panel p-6 rounded-3xl border-l-4 border-emerald-400 space-y-3">
+                        <i class="fa-solid fa-wand-magic-sparkles text-2xl text-emerald-400"></i>
+                        <h4 class="text-base font-bold text-white">AI Integrations</h4>
+                        <p class="text-xs text-slate-400">Embedding AI assistant APIs, automated OCR scanners, and study solvers inside mobile apps.</p>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <!-- PROJECTS SHOWCASE SECTION -->
-        <section id="projects" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- FEATURED PROJECTS SHOWCASE SECTION -->
+        <section id="projects" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/80">
+            
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                 <div>
-                    <h2 class="text-xs font-mono font-semibold uppercase tracking-widest text-brandCyan mb-2">Portfolio Showcase</h2>
-                    <h3 class="text-3xl sm:text-4xl font-extrabold text-slate-100">Featured Projects</h3>
-                    <p class="text-slate-400 text-sm mt-2">Click any project to view technical highlights & details.</p>
+                    <span class="text-xs font-mono uppercase tracking-widest text-brandOrange font-bold">Selected Works</span>
+                    <h2 class="text-3xl sm:text-5xl font-syne font-extrabold text-white mt-1">Featured Applications</h2>
+                    <p class="text-slate-400 text-sm mt-2">Click any project to view architectural highlights & technical details.</p>
                 </div>
 
-                <!-- Filter Tabs -->
-                <div class="flex flex-wrap gap-2 bg-slate-900/80 p-1.5 rounded-xl border border-slate-800">
-                    <button onclick="filterProjects('all')" id="tab-all" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold bg-brandCyan text-slate-950 transition-all">All</button>
-                    <button onclick="filterProjects('android')" id="tab-android" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition-all">Android Apps</button>
-                    <button onclick="filterProjects('web')" id="tab-web" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition-all">Web</button>
-                    <button onclick="filterProjects('ai')" id="tab-ai" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition-all">AI & Tools</button>
+                <!-- Filter Buttons -->
+                <div class="flex flex-wrap gap-2 bg-slate-900/90 p-1.5 rounded-2xl border border-slate-800">
+                    <button onclick="filterProjects('all')" id="tab-all" class="tab-btn px-5 py-2 rounded-xl text-xs font-bold uppercase transition-all bg-gradient-to-r from-brandPurple to-brandOrange text-white shadow-md">All Works</button>
+                    <button onclick="filterProjects('android')" id="tab-android" class="tab-btn px-5 py-2 rounded-xl text-xs font-bold uppercase text-slate-400 hover:text-white transition-all">Android Apps</button>
+                    <button onclick="filterProjects('web')" id="tab-web" class="tab-btn px-5 py-2 rounded-xl text-xs font-bold uppercase text-slate-400 hover:text-white transition-all">Web Platforms</button>
                 </div>
             </div>
 
-            <!-- Projects Grid -->
+            <!-- Dynamic Projects Grid -->
             <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Javascript will inject projects here dynamically -->
+                <!-- Javascript will populate project cards -->
             </div>
+
         </section>
 
-        <!-- SKILLS SECTION -->
-        <section id="skills" class="py-20 bg-brandDark/90 border-t border-slate-800">
+        <!-- SKILLS & PROFICIENCY SECTION -->
+        <section id="skills" class="py-24 bg-slate-950/60 border-t border-slate-800">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-14">
-                    <h2 class="text-xs font-mono font-semibold uppercase tracking-widest text-brandCyan mb-2">Technical Capabilities</h2>
-                    <h3 class="text-3xl font-extrabold text-slate-100">Skills & Tech Stack Breakdown</h3>
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-xs font-mono uppercase tracking-widest text-brandPurple font-bold">Technical Matrix</span>
+                    <h2 class="text-3xl sm:text-5xl font-syne font-extrabold text-white mt-1">Tools & Skillset</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Skill Item -->
-                    <div class="bg-brandCard p-5 rounded-xl border border-slate-800">
-                        <div class="flex items-center justify-between mb-3">
+                    
+                    <div class="glass-panel p-6 rounded-2xl space-y-4">
+                        <div class="flex justify-between items-center">
                             <div class="flex items-center gap-3">
-                                <span class="text-xl text-brandCyan"><i class="fa-brands fa-android"></i></span>
-                                <div>
-                                    <h4 class="text-sm font-bold text-slate-200">Android Studio / SDK</h4>
-                                    <span class="text-[10px] text-slate-400 font-mono">Mobile Dev</span>
-                                </div>
+                                <i class="fa-brands fa-android text-2xl text-emerald-400"></i>
+                                <span class="font-bold text-slate-100">Android SDK & Studio</span>
                             </div>
-                            <span class="text-xs font-mono font-bold text-brandCyan">92%</span>
+                            <span class="text-xs font-mono text-brandPurple font-bold">92%</span>
                         </div>
                         <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden p-0.5 border border-slate-800">
-                            <div class="h-full bg-gradient-to-r from-brandCyan to-brandEmerald rounded-full" style="width: 92%"></div>
+                            <div class="h-full bg-gradient-to-r from-brandPurple to-emerald-400 rounded-full" style="width: 92%"></div>
                         </div>
                     </div>
 
-                    <div class="bg-brandCard p-5 rounded-xl border border-slate-800">
-                        <div class="flex items-center justify-between mb-3">
+                    <div class="glass-panel p-6 rounded-2xl space-y-4">
+                        <div class="flex justify-between items-center">
                             <div class="flex items-center gap-3">
-                                <span class="text-xl text-yellow-400"><i class="fa-bolt"></i></span>
-                                <div>
-                                    <h4 class="text-sm font-bold text-slate-200">Kotlin (Native)</h4>
-                                    <span class="text-[10px] text-slate-400 font-mono">Mobile Dev</span>
-                                </div>
+                                <i class="fa-solid fa-bolt text-2xl text-yellow-400"></i>
+                                <span class="font-bold text-slate-100">Kotlin Development</span>
                             </div>
-                            <span class="text-xs font-mono font-bold text-brandCyan">90%</span>
+                            <span class="text-xs font-mono text-brandPurple font-bold">90%</span>
                         </div>
                         <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden p-0.5 border border-slate-800">
-                            <div class="h-full bg-gradient-to-r from-brandCyan to-brandEmerald rounded-full" style="width: 90%"></div>
+                            <div class="h-full bg-gradient-to-r from-brandPurple to-yellow-400 rounded-full" style="width: 90%"></div>
                         </div>
                     </div>
 
-                    <div class="bg-brandCard p-5 rounded-xl border border-slate-800">
-                        <div class="flex items-center justify-between mb-3">
+                    <div class="glass-panel p-6 rounded-2xl space-y-4">
+                        <div class="flex justify-between items-center">
                             <div class="flex items-center gap-3">
-                                <span class="text-xl text-brandEmerald"><i class="fa-solid fa-code"></i></span>
-                                <div>
-                                    <h4 class="text-sm font-bold text-slate-200">XML UI & Layouts</h4>
-                                    <span class="text-[10px] text-slate-400 font-mono">Mobile Dev</span>
-                                </div>
+                                <i class="fa-brands fa-react text-2xl text-sky-400"></i>
+                                <span class="font-bold text-slate-100">React.js Web</span>
                             </div>
-                            <span class="text-xs font-mono font-bold text-brandCyan">95%</span>
+                            <span class="text-xs font-mono text-brandPurple font-bold">85%</span>
                         </div>
                         <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden p-0.5 border border-slate-800">
-                            <div class="h-full bg-gradient-to-r from-brandCyan to-brandEmerald rounded-full" style="width: 95%"></div>
+                            <div class="h-full bg-gradient-to-r from-brandPurple to-sky-400 rounded-full" style="width: 85%"></div>
                         </div>
                     </div>
 
-                    <div class="bg-brandCard p-5 rounded-xl border border-slate-800">
-                        <div class="flex items-center justify-between mb-3">
+                    <div class="glass-panel p-6 rounded-2xl space-y-4">
+                        <div class="flex justify-between items-center">
                             <div class="flex items-center gap-3">
-                                <span class="text-xl text-sky-400"><i class="fa-brands fa-react"></i></span>
-                                <div>
-                                    <h4 class="text-sm font-bold text-slate-200">React.js</h4>
-                                    <span class="text-[10px] text-slate-400 font-mono">Web Dev</span>
-                                </div>
+                                <i class="fa-brands fa-python text-2xl text-brandOrange"></i>
+                                <span class="font-bold text-slate-100">Python Scripting</span>
                             </div>
-                            <span class="text-xs font-mono font-bold text-brandCyan">85%</span>
+                            <span class="text-xs font-mono text-brandPurple font-bold">82%</span>
                         </div>
                         <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden p-0.5 border border-slate-800">
-                            <div class="h-full bg-gradient-to-r from-brandCyan to-brandEmerald rounded-full" style="width: 85%"></div>
+                            <div class="h-full bg-gradient-to-r from-brandPurple to-brandOrange rounded-full" style="width: 82%"></div>
                         </div>
                     </div>
 
-                    <div class="bg-brandCard p-5 rounded-xl border border-slate-800">
-                        <div class="flex items-center justify-between mb-3">
+                    <div class="glass-panel p-6 rounded-2xl space-y-4">
+                        <div class="flex justify-between items-center">
                             <div class="flex items-center gap-3">
-                                <span class="text-xl text-yellow-500"><i class="fa-brands fa-python"></i></span>
-                                <div>
-                                    <h4 class="text-sm font-bold text-slate-200">Python Scripting</h4>
-                                    <span class="text-[10px] text-slate-400 font-mono">Backend / AI</span>
-                                </div>
+                                <i class="fa-solid fa-code text-2xl text-brandMagenta"></i>
+                                <span class="font-bold text-slate-100">XML & Custom Layouts</span>
                             </div>
-                            <span class="text-xs font-mono font-bold text-brandCyan">82%</span>
+                            <span class="text-xs font-mono text-brandPurple font-bold">95%</span>
                         </div>
                         <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden p-0.5 border border-slate-800">
-                            <div class="h-full bg-gradient-to-r from-brandCyan to-brandEmerald rounded-full" style="width: 82%"></div>
+                            <div class="h-full bg-gradient-to-r from-brandPurple to-brandMagenta rounded-full" style="width: 95%"></div>
                         </div>
                     </div>
 
-                    <div class="bg-brandCard p-5 rounded-xl border border-slate-800">
-                        <div class="flex items-center justify-between mb-3">
+                    <div class="glass-panel p-6 rounded-2xl space-y-4">
+                        <div class="flex justify-between items-center">
                             <div class="flex items-center gap-3">
-                                <span class="text-xl text-orange-400"><i class="fa-brands fa-html5"></i></span>
-                                <div>
-                                    <h4 class="text-sm font-bold text-slate-200">HTML5 / CSS3 / JS</h4>
-                                    <span class="text-[10px] text-slate-400 font-mono">Web Dev</span>
-                                </div>
+                                <i class="fa-brands fa-fire text-2xl text-orange-500"></i>
+                                <span class="font-bold text-slate-100">Firebase & Firestore</span>
                             </div>
-                            <span class="text-xs font-mono font-bold text-brandCyan">92%</span>
+                            <span class="text-xs font-mono text-brandPurple font-bold">88%</span>
                         </div>
                         <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden p-0.5 border border-slate-800">
-                            <div class="h-full bg-gradient-to-r from-brandCyan to-brandEmerald rounded-full" style="width: 92%"></div>
+                            <div class="h-full bg-gradient-to-r from-brandPurple to-orange-500 rounded-full" style="width: 88%"></div>
                         </div>
                     </div>
+
                 </div>
+
             </div>
         </section>
 
         <!-- CONTACT SECTION -->
-        <section id="contact" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="contact" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-                <div class="lg:col-span-5 space-y-6">
+                
+                <div class="lg:col-span-5 space-y-8">
                     <div>
-                        <h2 class="text-xs font-mono font-semibold uppercase tracking-widest text-brandCyan mb-2">Get In Touch</h2>
-                        <h3 class="text-3xl font-extrabold text-slate-100">Let's Build Something Together</h3>
+                        <span class="text-xs font-mono uppercase tracking-widest text-brandOrange font-bold">Initiate Project</span>
+                        <h2 class="text-3xl sm:text-5xl font-syne font-extrabold text-white mt-1">Let's Create Together</h2>
+                        <p class="text-slate-400 text-sm mt-3 leading-relaxed">
+                            Have an upcoming Android app project, web platform, or full-stack software client request? Feel free to write a message directly.
+                        </p>
                     </div>
 
-                    <div class="space-y-4 pt-2">
-                        <a href="mailto:adityakudalkar914@gmail.com" class="flex items-center gap-4 p-4 rounded-xl bg-brandCard border border-slate-800 hover:border-brandCyan/50 transition-all">
-                            <div class="w-10 h-10 rounded-lg bg-brandCyan/10 text-brandCyan flex items-center justify-center">
+                    <div class="space-y-4">
+                        <a href="mailto:adityakudalkar914@gmail.com" class="flex items-center gap-4 p-5 rounded-2xl glass-panel border border-slate-800 hover:border-brandPurple transition-all group">
+                            <div class="w-12 h-12 rounded-xl bg-brandPurple/20 text-brandPurple flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
                                 <i class="fa-solid fa-envelope"></i>
                             </div>
                             <div>
                                 <p class="text-xs font-mono text-slate-400">Direct Email</p>
-                                <p class="text-sm font-semibold text-slate-200">adityakudalkar914@gmail.com</p>
+                                <p class="text-sm font-bold text-slate-100 group-hover:text-brandPurple transition-colors">adityakudalkar914@gmail.com</p>
                             </div>
                         </a>
 
-                        <a href="https://github.com/adityakudalkar" target="_blank" class="flex items-center gap-4 p-4 rounded-xl bg-brandCard border border-slate-800 hover:border-brandCyan/50 transition-all">
-                            <div class="w-10 h-10 rounded-lg bg-slate-800 text-slate-300 flex items-center justify-center">
+                        <a href="https://github.com/adityakudalkar" target="_blank" class="flex items-center gap-4 p-5 rounded-2xl glass-panel border border-slate-800 hover:border-brandPurple transition-all group">
+                            <div class="w-12 h-12 rounded-xl bg-slate-800 text-slate-200 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
                                 <i class="fa-brands fa-github"></i>
                             </div>
                             <div>
-                                <p class="text-xs font-mono text-slate-400">GitHub Profile</p>
-                                <p class="text-sm font-semibold text-slate-200">github.com/adityakudalkar</p>
+                                <p class="text-xs font-mono text-slate-400">GitHub Repository</p>
+                                <p class="text-sm font-bold text-slate-100 group-hover:text-brandPurple transition-colors">github.com/adityakudalkar</p>
                             </div>
                         </a>
                     </div>
                 </div>
 
-                <!-- Contact Form -->
-                <div class="lg:col-span-7 bg-brandCard p-8 rounded-3xl border border-slate-800">
-                    <h4 class="text-xl font-bold text-slate-100 mb-6">Send Direct Project Message</h4>
-                    <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Interactive Form -->
+                <div class="lg:col-span-7 glass-panel p-8 sm:p-10 rounded-3xl border border-slate-800 relative">
+                    <h3 class="text-2xl font-syne font-bold text-white mb-6">Send Direct Project Inquiry</h3>
+                    
+                    <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                             <div>
-                                <label class="block text-xs font-mono text-slate-300 mb-2">Your Name</label>
-                                <input type="text" required placeholder="Client / Friend Name" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-slate-100 text-sm focus:outline-none focus:border-brandCyan">
+                                <label class="block text-xs font-mono text-slate-300 mb-2 uppercase">Your Name</label>
+                                <input type="text" required placeholder="Client / Company Name" class="w-full px-4 py-3.5 rounded-xl bg-slate-900/90 border border-slate-700 text-slate-100 text-sm focus:outline-none focus:border-brandPurple transition-colors">
                             </div>
                             <div>
-                                <label class="block text-xs font-mono text-slate-300 mb-2">Your Email</label>
-                                <input type="email" required placeholder="name@company.com" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-slate-100 text-sm focus:outline-none focus:border-brandCyan">
+                                <label class="block text-xs font-mono text-slate-300 mb-2 uppercase">Your Email</label>
+                                <input type="email" required placeholder="name@company.com" class="w-full px-4 py-3.5 rounded-xl bg-slate-900/90 border border-slate-700 text-slate-100 text-sm focus:outline-none focus:border-brandPurple transition-colors">
                             </div>
                         </div>
 
                         <div>
-                            <label class="block text-xs font-mono text-slate-300 mb-2">Message</label>
-                            <textarea rows="4" required placeholder="Hi Aditya, I reviewed your portfolio and would like to discuss a project..." class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-slate-100 text-sm focus:outline-none focus:border-brandCyan"></textarea>
+                            <label class="block text-xs font-mono text-slate-300 mb-2 uppercase">Project Details</label>
+                            <textarea rows="4" required placeholder="Hi Aditya, I reviewed your portfolio and would like to discuss an app/web project..." class="w-full px-4 py-3.5 rounded-xl bg-slate-900/90 border border-slate-700 text-slate-100 text-sm focus:outline-none focus:border-brandPurple transition-colors"></textarea>
                         </div>
 
-                        <button type="submit" class="w-full py-4 rounded-xl font-bold text-sm bg-gradient-to-r from-brandCyan to-brandEmerald text-slate-950 shadow-lg shadow-brandCyan/20 hover:scale-[1.01] transition-all flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-paper-plane"></i>
-                            <span>Send Message to Aditya</span>
+                        <button type="submit" class="w-full py-4 rounded-xl font-syne font-extrabold uppercase tracking-wider text-sm bg-gradient-to-r from-brandPurple via-purple-600 to-brandOrange text-white shadow-lg shadow-brandPurple/25 hover:scale-[1.01] transition-all">
+                            Send Message to Aditya
                         </button>
                     </form>
+
                     <div id="form-success" class="hidden p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-center font-medium text-sm mt-4">
-                        Message sent! Aditya will reply via adityakudalkar914@gmail.com.
+                        Message sent successfully! Aditya will respond to your email shortly.
                     </div>
                 </div>
+
             </div>
         </section>
+
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-slate-950 border-t border-slate-800 py-8 text-center text-xs text-slate-500">
+    <footer class="bg-slate-950 border-t border-slate-900 py-10 text-center text-xs text-slate-500">
         <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
             <p>© 2026 Aditya Kudalkar. All rights reserved.</p>
             <div class="flex items-center gap-6">
-                <a href="#hero" class="hover:text-brandCyan">Back to Top ↑</a>
-                <a href="mailto:adityakudalkar914@gmail.com" class="hover:text-brandCyan">Email</a>
+                <a href="#hero" class="hover:text-brandPurple transition-colors">Back to Top ↑</a>
+                <a href="mailto:adityakudalkar914@gmail.com" class="hover:text-brandPurple transition-colors">Email</a>
+                <a href="https://github.com/adityakudalkar" target="_blank" class="hover:text-brandPurple transition-colors">GitHub</a>
             </div>
         </div>
     </footer>
 
     <!-- INTERACTIVE PROJECT MODAL -->
     <div id="project-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
-        <div class="w-full max-w-xl bg-brandCard rounded-3xl border border-slate-700 shadow-2xl overflow-hidden flex flex-col">
+        <div class="w-full max-w-2xl glass-panel rounded-3xl border border-slate-700 shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
             <div class="p-6 bg-slate-900 border-b border-slate-800 flex items-center justify-between">
-                <h3 id="modal-title" class="text-xl font-bold text-slate-100">Project Title</h3>
-                <button onclick="closeModal()" class="p-2 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+                <div>
+                    <h3 id="modal-title" class="text-xl font-syne font-bold text-white">Project Title</h3>
+                    <p id="modal-tagline" class="text-xs text-brandPurple font-mono mt-0.5"></p>
+                </div>
+                <button onclick="closeModal()" class="p-2 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
             </div>
-            <div class="p-6 space-y-4 max-h-[70vh] overflow-y-auto">
-                <p id="modal-tagline" class="text-xs text-brandCyan font-mono"></p>
+            <div class="p-6 space-y-5 overflow-y-auto">
                 <p id="modal-description" class="text-sm text-slate-300 leading-relaxed"></p>
                 <div>
-                    <h5 class="text-xs font-mono text-slate-400 mb-2 uppercase">Tech Stack:</h5>
+                    <h5 class="text-xs font-mono text-slate-400 mb-3 uppercase">Tech Stack & Tools:</h5>
                     <div id="modal-tags" class="flex flex-wrap gap-2"></div>
                 </div>
             </div>
-            <div class="p-4 bg-slate-900 border-t border-slate-800 text-right">
-                <button onclick="closeModal()" class="px-4 py-2 rounded-xl bg-brandCyan text-slate-950 font-bold text-xs">Close</button>
+            <div class="p-5 bg-slate-900 border-t border-slate-800 flex justify-between items-center">
+                <a id="modal-github" href="https://github.com/adityakudalkar" target="_blank" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-slate-200 flex items-center gap-2">
+                    <i class="fa-brands fa-github"></i> Source Code
+                </a>
+                <button onclick="closeModal()" class="px-5 py-2 rounded-xl bg-gradient-to-r from-brandPurple to-brandOrange text-white font-bold text-xs uppercase">Close</button>
             </div>
         </div>
     </div>
 
-    <!-- JAVASCRIPT FOR DYNAMIC DATA AND INTERACTION -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
         const projects = [
-            { id: 'prepsprint', title: 'PrepSprint', tagline: 'AI-Powered Exam Assistant', category: 'android', badge: 'Featured Mobile App', icon: 'fa-mobile-screen', description: 'An all-in-one Android application engineered for diploma students to streamline exam preparation, auto-curate study notes, solve question papers, and track syllabus progress.', tags: ['Android', 'Kotlin', 'XML', 'Firebase'] },
-            { id: 'devconnect', title: 'DevConnect', tagline: 'Developer Community App', category: 'android', badge: 'Native Mobile', icon: 'fa-users', description: 'A dedicated Android mobile community app built for developers to collaborate on tech projects, share code snippets, ask technical queries, and hire peer contributors.', tags: ['Android', 'Kotlin', 'XML', 'Firestore'] },
-            { id: 'techsphere', title: 'TechSphere', tagline: 'Tech Services Web Platform', category: 'web', badge: 'Web Application', icon: 'fa-globe', description: 'A modern, responsive multi-page web application showcasing tech services, client solutions, web design packages, and interactive project consultation booking.', tags: ['React', 'JavaScript', 'HTML5', 'Tailwind'] },
-            { id: 'timetable', title: 'Weekly Timetable Viewer', tagline: 'Smart Interactive Grid Engine', category: 'web', badge: 'Utility Web App', icon: 'fa-calendar-days', description: 'A customizable timetable web engine built for academic institutions and students. Features live time tracking, custom print CSS stylesheet export, and schedule management.', tags: ['HTML5', 'CSS Grid', 'JavaScript'] },
-            { id: 'ocr-app', title: 'OCR Document & Scanner App', tagline: 'Computer Vision & Text Extraction', category: 'ai', badge: 'Android Utility', icon: 'fa-eye', description: 'Native Android application designed for passport photo verification, document scanning, and automated text extraction directly from live camera frames.', tags: ['Android', 'Kotlin', 'OpenCV', 'Python API'] },
-            { id: 'doctor-patient', title: 'Patient-Doctor Collaboration', tagline: 'Digital Healthcare Telehealth App', category: 'android', badge: 'Full Stack App', icon: 'fa-user-doctor', description: 'Integrated digital health ecosystem bridging communication between patients and doctors. Features appointment scheduling, prescription tracking, and direct consultation.', tags: ['Android', 'Kotlin', 'Python Backend', 'REST APIs'] }
+            { id: 'prepsprint', title: 'PrepSprint', tagline: 'AI-Powered Exam Assistant', category: 'android', badge: 'Featured Mobile App', icon: 'fa-mobile-screen', description: 'An all-in-one Android application engineered for diploma students to streamline exam preparation, auto-curate study notes, solve question papers, and track syllabus progress with AI assistant integration.', tags: ['Android Native', 'Kotlin', 'XML UI', 'Firebase', 'AI API'] },
+            { id: 'devconnect', title: 'DevConnect', tagline: 'Developer Community Hub', category: 'android', badge: 'Native Mobile', icon: 'fa-users', description: 'A dedicated Android mobile community app built for developers to collaborate on tech projects, share code snippets, ask technical queries, and hire peer contributors.', tags: ['Android SDK', 'Kotlin', 'Firestore', 'Firebase Auth'] },
+            { id: 'techsphere', title: 'TechSphere', tagline: 'Tech Services Web Platform', category: 'web', badge: 'Web Application', icon: 'fa-globe', description: 'A modern, responsive multi-page web application showcasing tech services, client solutions, web design packages, and interactive project consultation booking.', tags: ['React.js', 'JavaScript', 'HTML5', 'Tailwind CSS'] },
+            { id: 'timetable', title: 'Orbit Timetable Engine', tagline: 'Interactive Schedule Grid', category: 'web', badge: 'Utility Web App', icon: 'fa-calendar-days', description: 'A customizable timetable web engine built for academic institutions and students. Features live time tracking, custom print CSS stylesheet export, and local schedule storage.', tags: ['HTML5', 'CSS Grid', 'JavaScript (ES6)', 'Print CSS'] },
+            { id: 'ocr-app', title: 'Smart OCR Scanner', tagline: 'Computer Vision Text Extractor', category: 'android', badge: 'Android Utility', icon: 'fa-eye', description: 'Native Android application designed for passport photo verification, document scanning, and automated text extraction directly from live camera frames.', tags: ['Android', 'Kotlin', 'OpenCV', 'Python Backend'] },
+            { id: 'doctor-patient', title: 'Doc-Patient Connect', tagline: 'Digital Telehealth App', category: 'android', badge: 'Full Stack App', icon: 'fa-user-doctor', description: 'Integrated digital health ecosystem bridging communication between patients and doctors. Features appointment scheduling, prescription tracking, and direct consultation.', tags: ['Android SDK', 'Kotlin', 'Python APIs', 'REST Services'] }
         ];
 
         function renderProjects(items) {
             const grid = document.getElementById('projects-grid');
             grid.innerHTML = items.map(p => `
-                <div onclick="openModal('${p.id}')" class="group cursor-pointer rounded-2xl bg-brandCard border border-slate-800 hover:border-brandCyan/50 transition-all p-6 flex flex-col justify-between">
+                <div onclick="openModal('${p.id}')" class="group cursor-pointer rounded-3xl glass-panel border border-slate-800 hover:border-brandPurple/50 transition-all p-6 flex flex-col justify-between hover:shadow-2xl hover:shadow-brandPurple/10">
                     <div>
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="p-3 rounded-xl bg-slate-900 text-brandCyan border border-slate-800 text-lg"><i class="fa-solid ${p.icon}"></i></span>
-                            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-700 text-[10px] font-mono text-brandCyan">${p.badge}</span>
+                        <div class="flex justify-between items-start mb-5">
+                            <span class="w-12 h-12 rounded-2xl bg-slate-900 text-brandPurple border border-slate-800 flex items-center justify-center text-xl group-hover:scale-110 transition-transform"><i class="fa-solid ${p.icon}"></i></span>
+                            <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-700 text-[10px] font-mono font-bold text-brandPurple">${p.badge}</span>
                         </div>
-                        <h4 class="text-lg font-bold text-slate-100 group-hover:text-brandCyan transition-colors">${p.title}</h4>
-                        <p class="text-xs text-brandCyan font-mono mb-2">${p.tagline}</p>
-                        <p class="text-sm text-slate-400 line-clamp-3">${p.description}</p>
+                        <h4 class="text-xl font-syne font-bold text-white group-hover:text-brandPurple transition-colors">${p.title}</h4>
+                        <p class="text-xs text-brandOrange font-mono mb-3">${p.tagline}</p>
+                        <p class="text-xs text-slate-400 leading-relaxed line-clamp-3">${p.description}</p>
                     </div>
-                    <div class="mt-4 pt-4 border-t border-slate-800 flex justify-between items-center text-xs font-mono text-slate-400">
-                        <span>Click for details</span>
-                        <i class="fa-solid fa-arrow-right text-brandCyan group-hover:translate-x-1 transition-transform"></i>
+                    <div class="mt-6 pt-4 border-t border-slate-800/80 flex justify-between items-center text-xs font-mono text-slate-400">
+                        <span>Tap for highlights</span>
+                        <i class="fa-solid fa-arrow-right text-brandPurple group-hover:translate-x-1.5 transition-transform"></i>
                     </div>
                 </div>
             `).join('');
@@ -491,9 +564,9 @@
 
         function filterProjects(cat) {
             document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.className = "tab-btn px-4 py-2 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition-all";
+                btn.className = "tab-btn px-5 py-2 rounded-xl text-xs font-bold uppercase text-slate-400 hover:text-white transition-all";
             });
-            document.getElementById(`tab-${cat}`).className = "tab-btn px-4 py-2 rounded-lg text-xs font-semibold bg-brandCyan text-slate-950 transition-all";
+            document.getElementById(`tab-${cat}`).className = "tab-btn px-5 py-2 rounded-xl text-xs font-bold uppercase transition-all bg-gradient-to-r from-brandPurple to-brandOrange text-white shadow-md";
 
             if (cat === 'all') renderProjects(projects);
             else renderProjects(projects.filter(p => p.category === cat));
@@ -504,7 +577,7 @@
             document.getElementById('modal-title').innerText = p.title;
             document.getElementById('modal-tagline').innerText = p.tagline;
             document.getElementById('modal-description').innerText = p.description;
-            document.getElementById('modal-tags').innerHTML = p.tags.map(t => `<span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-700 text-brandCyan text-xs font-mono">${t}</span>`).join('');
+            document.getElementById('modal-tags').innerHTML = p.tags.map(t => `<span class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-700 text-brandPurple text-xs font-mono font-semibold">${t}</span>`).join('');
             document.getElementById('project-modal').classList.remove('hidden');
         }
 
@@ -518,6 +591,15 @@
             document.getElementById('form-success').classList.remove('hidden');
             setTimeout(() => document.getElementById('form-success').classList.add('hidden'), 5000);
         }
+
+        // Live Clock Update
+        function updateClock() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
+            document.getElementById('live-time').innerText = `KOLHAPUR, IN (${timeStr} IST)`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
 
         // Initial Render
         renderProjects(projects);
